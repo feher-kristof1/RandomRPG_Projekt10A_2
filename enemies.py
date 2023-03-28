@@ -1,4 +1,3 @@
-from pstats import Stats
 import random
 
 
@@ -6,7 +5,7 @@ class Enemies:
     @property
     def Enemyname(self) -> str:
         randomnumbers: int = 0
-        while randomnumbers != 9:
+        while randomnumbers != 1:
             enemyname: str = ''
             r: int = random.randint(0, 100)
             randomnumbers += 1
@@ -61,20 +60,6 @@ class Enemies:
                 entype = '.iso'
                 return entype
 
-    @ property
-    def Enemystats_hp(self) -> int:
-        hp: int = 0
-        return hp
-
-    @ property
-    def Enemystats_atk(self) -> int:
-        atk: int = 0
-        return atk
-
-    @ property
-    def Enemystats_spd(self) -> int:
-        spd: int = 0
-        return spd
     @property
     def fileread(self) -> list[str]:
         enemies: list[str] = []
@@ -82,5 +67,58 @@ class Enemies:
             for sor in file.read().splitlines()[1:]:
                 enemies.append(sor)
         return enemies
+
+    @property
+    def Stats_hp(self) -> list[int]:
+        HP: list[int] = []
+        while len(HP) != 1:
+            if self.Enemyname == 'Bat' or self.Enemyname == 'Snake':
+                En_hp = 10
+                HP.append(En_hp)
+            elif self.Enemyname == 'Zombie' or self.Enemyname == 'Ghost':
+                En_hp = 20
+                HP.append(En_hp)
+            elif self.Enemyname == 'Ogre' or self.Enemyname == 'Troll':
+                En_hp = 50
+                HP.append(En_hp)
+            elif self.Enemyname == 'Dragon':
+                En_hp = 100
+                HP.append(En_hp)
+        return HP
+    
+    @property
+    def Stats_spd(self) -> list[int]:
+        SPD: list[int] = []
+        while len(SPD) != 1:
+            if self.Enemyname == 'Bat':
+                En_spd = 3
+                SPD.append(En_spd)
+            elif self.Enemyname == 'Zombie' or self.Enemyname == 'Ogre' or self.Enemyname == 'Snake':
+                En_spd = 2
+                SPD.append(En_spd)
+            elif self.Enemyname == 'Ghost' or self.Enemyname == 'Troll':
+                En_spd = 1
+                SPD.append(En_spd)
+            elif self.Enemyname == 'Dragon':
+                En_spd = 100
+                SPD.append(En_spd)
+        return SPD
+    
+    @property
+    def Stats_atk(self) -> list[int]:
+        ATK: list[int] = []
+        while len(ATK) != 1:
+            if self.Enemyname == 'Bat' or self.Enemyname == 'Zombie' or self.Enemyname == 'Ogre':
+                En_atk = 10
+                ATK.append(En_atk)
+            elif self.Enemyname == 'Ghost' or self.Enemyname == 'Snake' or self.Enemyname == 'Troll':
+                En_atk = 20
+                ATK.append(En_atk)
+            elif self.Enemyname == 'Dragon':
+                En_atk = 100
+                ATK.append(En_atk)
+        return ATK
+            
+
     def __init__(self):
         pass
