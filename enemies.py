@@ -82,14 +82,5 @@ class Enemies:
             for sor in file.read().splitlines()[1:]:
                 enemies.append(sor)
         return enemies
-    
-    @property
-    def stats_hp(self) -> list[int]:
-        stats: list[int] = []
-        for i in self.fileread:
-            
-        return stats
-
-
     def __init__(self):
         pass
