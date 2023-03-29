@@ -1,5 +1,6 @@
 from enemies import Enemies
 from enemies import Enemymods
+from battle import battle
 import random
 
 
@@ -22,13 +23,23 @@ def main() -> None:
     randomnumber: int = 0
     while randomnumber != 1:
         r = random.randint(0, len(enemies_list) - 1)
-        fr = random.randint(0, len(file_list))
+        fr = random.randint(0, len(file_list) - 1)
+        rv = r
+        frv = fr
+        enemy_name: str = f'{enemies_list[rv].Name}{file_list[frv].file_name}'
+        enemy_hp: int = int(enemies_list[rv].hp * file_list[frv].file_hp)
+        enemy_atk: int = int(enemies_list[rv].atk * file_list[frv].file_atk)
+        enemy_spd: int = int(enemies_list[rv].spd * file_list[frv].file_spd)
+        hp: int = 100
+        atk: int = 10
+        spd: int = 10
+        
         randomnumber += 1
-        print(f'{enemies_list[r].Name}{file_list[fr].file_name}')
-        print(enemies_list[r].hp * file_list[fr].file_hp)
-        print(enemies_list[r].atk * file_list[fr].file_atk)
-        print(enemies_list[r].spd * file_list[fr].file_spd)
-
+        # print(f'{enemies_list[r].Name}{file_list[fr].file_name}')
+        # print(enemies_list[r].hp * file_list[fr].file_hp)
+        # print(enemies_list[r].atk * file_list[fr].file_atk)
+        # print(enemies_list[r].spd * file_list[fr].file_spd)
+    battle(hp, spd, atk, enemy_hp, enemy_spd, enemy_atk, enemy_name)
 
 if __name__ == "__main__":
     main()
