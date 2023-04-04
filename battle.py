@@ -12,7 +12,7 @@ def battle(hp: int, spd: int, atk: int, mana: int, item: int, enemy_hp: int, ene
         print(menu(hp, atk, spd, mana, item, enemy_hp, enemy_atk, enemy_spd, enemy_name))
         player_input_value: int = int(player_input())
         if spd > enemy_spd:
-            if player_input_value == 1
+            if player_input_value == 1:
                 enemy_hp -= atk
                 print(f"Az ellenség életereje {atk} értékkel csökkent, {enemy_hp} élete maradt")
             elif player_input_value == 2:
