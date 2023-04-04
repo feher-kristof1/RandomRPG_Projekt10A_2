@@ -87,3 +87,4 @@ def battle(hp: int, spd: int, atk: int, mana: int, item: int, enemy_hp: int, ene
         print("YOU LOSE")
     elif hp > 0:
         print("YOU WIN")
+    return 0
