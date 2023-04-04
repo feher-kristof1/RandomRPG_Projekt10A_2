@@ -19,16 +19,16 @@ def battle(hp: int, spd: int, atk: int, mana: int, item: int, enemy_hp: int, ene
                 print("Sikeres menekülés")
                 return 0  # kill battle
             elif player_input_value == 3:
-                magic_select: int = int(input("válassz varázslatot[1 -> healing(+30HP)(5 mana), 2 ->enemy atk down(-1atk)(3 mana), 3 -> your atk up(+1atk)(3mana)]"))
-                if magic_select == 1 and mana_val >= 5:
+                magic_select: int = int(input("válassz varázslatot[1 -> healing(+30HP)(5 mana), 2 ->enemy atk down(-1atk)(3 mana), 3 -> your atk up(+1atk)(3mana)]: "))
+                if magic_select == 1 and mana >= 5:
                     print("karakter élete +30")
                     hp += 30
                     mana -= 5
-                if magic_select == 2 and mana_val >= 3:
+                elif magic_select == 2 and mana >= 3:
                     print("ellenség támadása -1")
                     enemy_atk -= 1
                     mana -= 3
-                if magic_select == 3 and mana_val >= 3:
+                elif magic_select == 3 and mana >= 3:
                     print("támadásod +1")
                     atk += 1
                     mana -= 3
@@ -56,16 +56,16 @@ def battle(hp: int, spd: int, atk: int, mana: int, item: int, enemy_hp: int, ene
             elif player_input_value == 2:
                 print("Sikertelen menekülés")
             elif player_input_value == 3:
-                magic_select: int = int(input("válassz varázslatot[1 -> healing(+30HP)(5 mana), 2 ->enemy atk down(-1atk)(3 mana), 3 -> your atk up(+1atk)(3mana)]"))
-                if magic_select == 1 and mana_val >= 5:
+                magic_select: int = int(input("válassz varázslatot[1 -> healing(+30HP)(5 mana), 2 ->enemy atk down(-1atk)(3 mana), 3 -> your atk up(+1atk)(3mana)]: "))
+                if magic_select == 1 and mana >= 5:
                     print("karakter élete +30")
                     hp += 30
                     mana -= 5
-                if magic_select == 2 and mana_val >= 3:
+                elif magic_select == 2 and mana >= 3:
                     print("ellenség támadása -1")
                     enemy_atk -= 1
                     mana -= 3
-                if magic_select == 3 and mana_val >= 3:
+                elif magic_select == 3 and mana >= 3:
                     print("támadásod +1")
                     atk += 1
                     mana -= 3

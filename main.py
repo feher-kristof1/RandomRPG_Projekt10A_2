@@ -41,6 +41,8 @@ def main() -> None:
         hppoints: int = 0
         atkpoints: int = 0
         spdpoints: int = 0
+        mana: int = 10
+        item: int = 5
         while random_points != 10:
             skillpoint: int = random.randint(0, 3)
             if skillpoint == 1:
@@ -64,7 +66,7 @@ def main() -> None:
         # print(enemies_list[r].hp * file_list[fr].file_hp)
         # print(enemies_list[r].atk * file_list[fr].file_atk)
         # print(enemies_list[r].spd * file_list[fr].file_spd)
-    battle(hp, spd, atk, enemy_hp, enemy_spd, enemy_atk, enemy_name)
+    battle(hp, spd, atk, mana, item, enemy_hp, enemy_spd, enemy_atk, enemy_name)
 
 
 if __name__ == "__main__":
