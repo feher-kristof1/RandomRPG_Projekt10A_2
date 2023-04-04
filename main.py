@@ -33,13 +33,16 @@ def main() -> None:
         hp: int = 100
         atk: int = 10
         spd: int = 10
+        mana: int = 10
+        item: int = 5
         
         randomnumber += 1
         # print(f'{enemies_list[r].Name}{file_list[fr].file_name}')
         # print(enemies_list[r].hp * file_list[fr].file_hp)
         # print(enemies_list[r].atk * file_list[fr].file_atk)
         # print(enemies_list[r].spd * file_list[fr].file_spd)
-    battle(hp, spd, atk, enemy_hp, enemy_spd, enemy_atk, enemy_name)
+    battle(hp, spd, atk, mana, item, enemy_hp, enemy_spd, enemy_atk, enemy_name)
+
 
 if __name__ == "__main__":
     main()
