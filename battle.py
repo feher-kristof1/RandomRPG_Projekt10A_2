@@ -4,12 +4,10 @@ from menu import menu
 def player_input():
     while True:
         inp: str = (input("kérem a játékos lépését [1 -> támadás, 2 -> Futás, 3 -> magic, 4 -> item]: "))
-        if inp not in ["1","2","3","4"]:
+        if inp not in ["1", "2", "3", "4"]:
             print("Hibás input")
         else:
             return int(inp)
-
-    
 
 
 def battle(hp: int, spd: int, atk: int, mana: int, item: int, enemy_hp: int, enemy_spd: int, enemy_atk: int, enemy_name: str):
@@ -42,7 +40,7 @@ def battle(hp: int, spd: int, atk: int, mana: int, item: int, enemy_hp: int, ene
                     mana -= 4
                 else:
                     print("NO MANA")
-                
+
             elif player_input_value == 4:
                 item_select: int = int(input("melyik itemet használod[1-> vulnerary(+50HP), 2 -> killer(enemy HP halved)]: "))
                 if item_select == 1 and item >= 1:
