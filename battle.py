@@ -94,6 +94,7 @@ def battle(hp: int, spd: int, atk: int, mana: int, item: int, enemy_hp: int, ene
         mana_val += 1
     if enemy_hp > 0:
         print("YOU LOSE")
+        return True
     elif hp > 0:
         print("YOU WIN")
-    return 0
+        return False

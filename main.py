@@ -46,6 +46,7 @@ def main() -> None:
             hppoints += 1
             spdpoints += 1
             random_points += 1
+    kill: bool = False
     while stage_calc != 10:
         r = random.randint(0, len(enemies_list) - 2)
         fr = random.randint(0, len(file_list) - 2)
@@ -67,20 +68,23 @@ def main() -> None:
         # print(enemies_list[r].hp * file_list[fr].file_hp)
         # print(enemies_list[r].atk * file_list[fr].file_atk)
         # print(enemies_list[r].spd * file_list[fr].file_spd)
+        
         if stage_calc == 5:
             enemy_name: str = f'{enemies_list[-1].Name}{file_list[frv].file_name}'
             enemy_hp: int = int(enemies_list[-1].hp * file_list[frv].file_hp)
             enemy_atk: int = int(enemies_list[-1].atk * file_list[frv].file_atk)
             enemy_spd: int = int(enemies_list[-1].spd * file_list[frv].file_spd)
-            battle(hp, spd, atk, mana, item, enemy_hp, enemy_spd, enemy_atk, enemy_name)
+            kill = battle(hp, spd, atk, mana, item, enemy_hp, enemy_spd, enemy_atk, enemy_name)
         elif stage_calc == 10:
             enemy_name: str = f'{enemies_list[-1].Name}{file_list[-1].file_name}'
             enemy_hp: int = int(enemies_list[-1].hp * file_list[-1].file_hp)
             enemy_atk: int = int(enemies_list[-1].atk * file_list[-1].file_atk)
             enemy_spd: int = int(enemies_list[-1].spd * file_list[-1].file_spd)
-            battle(hp, spd, atk, mana, item, enemy_hp, enemy_spd, enemy_atk, enemy_name)
+            kill = battle(hp, spd, atk, mana, item, enemy_hp, enemy_spd, enemy_atk, enemy_name)
         else:
-            battle(hp, spd, atk, mana, item, enemy_hp, enemy_spd, enemy_atk, enemy_name)
+            kill = battle(hp, spd, atk, mana, item, enemy_hp, enemy_spd, enemy_atk, enemy_name)
+        if kill is True:
+            break
         random_points = 0
         while random_points != 1:
             skillpoint: int = random.randint(0, 3)
