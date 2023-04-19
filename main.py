@@ -1,4 +1,5 @@
 import os
+import time
 from char_class import Playerstats
 from enemies import Enemies
 from enemies import Enemymods
@@ -69,7 +70,8 @@ def main() -> None:
         # print(enemies_list[r].hp * file_list[fr].file_hp)
         # print(enemies_list[r].atk * file_list[fr].file_atk)
         # print(enemies_list[r].spd * file_list[fr].file_spd)
-        
+
+        print(f'{stage_calc}. pálya')
         if stage_calc == 5:
             while random_points != 10:
                 skillpoint: int = random.randint(0, 3)
@@ -91,6 +93,8 @@ def main() -> None:
             enemy_atk: int = int(enemies_list[-1].atk * file_list[frv].file_atk)
             enemy_spd: int = int(enemies_list[-1].spd * file_list[frv].file_spd)
             kill = battle(hp, spd, atk, mana, item, enemy_hp, enemy_spd, enemy_atk, enemy_name)
+            time.sleep(2)
+            os.system('cls')
         elif stage_calc == 10:
             while random_points != 10:
                 skillpoint: int = random.randint(0, 3)
@@ -112,8 +116,12 @@ def main() -> None:
             enemy_atk: int = int(enemies_list[-1].atk * file_list[-1].file_atk)
             enemy_spd: int = int(enemies_list[-1].spd * file_list[-1].file_spd)
             kill = battle(hp, spd, atk, mana, item, enemy_hp, enemy_spd, enemy_atk, enemy_name)
+            time.sleep(2)
+            os.system('cls')
         else:
             kill = battle(hp, spd, atk, mana, item, enemy_hp, enemy_spd, enemy_atk, enemy_name)
+            time.sleep(2)
+            os.system('cls')
         if kill is True:
             break
         random_points = 0
