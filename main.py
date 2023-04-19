@@ -1,3 +1,4 @@
+import os
 from char_class import Playerstats
 from enemies import Enemies
 from enemies import Enemymods
@@ -70,12 +71,42 @@ def main() -> None:
         # print(enemies_list[r].spd * file_list[fr].file_spd)
         
         if stage_calc == 5:
+            while random_points != 10:
+                skillpoint: int = random.randint(0, 3)
+                if skillpoint == 1:
+                    hppoints += 1
+                    random_points += 1
+                elif skillpoint == 2:
+                    atkpoints += 1
+                    random_points += 1
+                elif skillpoint == 3:
+                    spdpoints += 1
+                    random_points += 1
+                elif skillpoint == 0:
+                    hppoints += 1
+                    spdpoints += 1
+                    random_points += 1
             enemy_name: str = f'{enemies_list[-1].Name}{file_list[frv].file_name}'
             enemy_hp: int = int(enemies_list[-1].hp * file_list[frv].file_hp)
             enemy_atk: int = int(enemies_list[-1].atk * file_list[frv].file_atk)
             enemy_spd: int = int(enemies_list[-1].spd * file_list[frv].file_spd)
             kill = battle(hp, spd, atk, mana, item, enemy_hp, enemy_spd, enemy_atk, enemy_name)
         elif stage_calc == 10:
+            while random_points != 10:
+                skillpoint: int = random.randint(0, 3)
+                if skillpoint == 1:
+                    hppoints += 1
+                    random_points += 1
+                elif skillpoint == 2:
+                    atkpoints += 1
+                    random_points += 1
+                elif skillpoint == 3:
+                    spdpoints += 1
+                    random_points += 1
+                elif skillpoint == 0:
+                    hppoints += 1
+                    spdpoints += 1
+                    random_points += 1
             enemy_name: str = f'{enemies_list[-1].Name}{file_list[-1].file_name}'
             enemy_hp: int = int(enemies_list[-1].hp * file_list[-1].file_hp)
             enemy_atk: int = int(enemies_list[-1].atk * file_list[-1].file_atk)
