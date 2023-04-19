@@ -46,13 +46,22 @@ def battle(hp: int, spd: int, atk: int, mana: int, item: int, enemy_hp: int, ene
                 else:
                     print("NO ITEMS")
             hp -= enemy_atk
-            print(f"A játékos életereje {enemy_atk} értékkel csökkent, {hp} élete maradt")
+            if hp < 0:
+                print(f"A játékos életereje {enemy_atk} értékkel csökkent, meghalt")
+            else:
+                print(f"A játékos életereje {enemy_atk} értékkel csökkent, {hp} élete maradt")
         else:
             hp -= enemy_atk
-            print(f"A játékos életereje {enemy_atk} értékkel csökkent, {hp} élete maradt")
+            if hp < 0:
+                print(f"A játékos életereje {enemy_atk} értékkel csökkent, meghalt")
+            else:
+                print(f"A játékos életereje {enemy_atk} értékkel csökkent, {hp} élete maradt")
             if player_input_value == 1:
                 enemy_hp -= atk
-                print(f"Az ellenség életereje {atk} értékkel csökkent, {enemy_hp} élete maradt")
+                if hp < 0:
+                    print(f"Az ellenség életereje {atk} értékkel csökkent, meghalt")
+                else:
+                    print(f"Az ellenség életereje {atk} értékkel csökkent, {enemy_hp} élete maradt")
             elif player_input_value == 2:
                 print("Sikertelen menekülés")
             elif player_input_value == 3:
