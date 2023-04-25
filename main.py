@@ -1,14 +1,13 @@
+import random
 import os
 import time
 from char_class import Playerstats
 from enemies import Enemies
 from enemies import Enemymods
 from battle import battle
-import random
 
 
 def main() -> None:
-
     enemies_list: list[Enemies] = []
     with open('enemies.txt', 'r', encoding='utf-8') as file:
         for sor in file.read().splitlines()[1:]:
@@ -93,6 +92,8 @@ def main() -> None:
             enemy_atk: int = int(enemies_list[-1].atk * file_list[frv].file_atk)
             enemy_spd: int = int(enemies_list[-1].spd * file_list[frv].file_spd)
             kill = battle(hp, spd, atk, mana, item, enemy_hp, enemy_spd, enemy_atk, enemy_name)
+            if kill is False:
+                print('Wait...')
             time.sleep(2)
             os.system('cls')
         elif stage_calc == 10:
@@ -116,10 +117,14 @@ def main() -> None:
             enemy_atk: int = int(enemies_list[-1].atk * file_list[-1].file_atk)
             enemy_spd: int = int(enemies_list[-1].spd * file_list[-1].file_spd)
             kill = battle(hp, spd, atk, mana, item, enemy_hp, enemy_spd, enemy_atk, enemy_name)
+            if kill is False:
+                print('Wait...')
             time.sleep(2)
             os.system('cls')
         else:
             kill = battle(hp, spd, atk, mana, item, enemy_hp, enemy_spd, enemy_atk, enemy_name)
+            if kill is False:
+                print('Wait...')
             time.sleep(2)
             os.system('cls')
         if kill is True:
@@ -146,3 +151,11 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+while True:
+    inpp: str = str(input('Szeretnél új játékot kezdeni? (Y/N): '))
+    if inpp == 'Y':
+        os.system('cls')
+        main()
+    else:
+        break
