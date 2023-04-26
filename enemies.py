@@ -1,7 +1,3 @@
-
-from sys import float_repr_style
-
-
 class Enemies:
     Name: str
     hp: int
