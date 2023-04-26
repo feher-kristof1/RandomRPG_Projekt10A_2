@@ -1,4 +1,3 @@
-
 class Enemies:
     Name: str
     hp: int
@@ -25,11 +24,11 @@ class Enemymods:
     file_name: str
     file_hp: float
     file_atk: float
-    file_spd: int
+    file_spd: float
 
     def __init__(self, fsor: str):
         file = fsor.split(' ')
         self.file_name = file[0]
         self.file_hp = float(file[1])
         self.file_atk = float(file[2])
-        self.file_spd = int(file[3])
+        self.file_spd = float(file[3])
