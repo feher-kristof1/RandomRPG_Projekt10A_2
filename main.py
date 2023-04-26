@@ -48,7 +48,6 @@ def main() -> None:
             spdpoints += 1
             random_points += 1
     kill: bool = False
-    remaining_hp: int = -999
     while random_points != 20:
         skillpoint: int = random.randint(0, 3)
         if skillpoint == 1:
@@ -69,7 +68,6 @@ def main() -> None:
     rv = r
     frv = fr
     rs = random.randint(0, len(playerstat_list) - 1)
-    
 
     mana: int = 10
     item: int = 5
@@ -87,7 +85,7 @@ def main() -> None:
         enemy_atk: int = int(enemies_list[rv].atk * file_list[frv].file_atk)
         enemy_spd: int = int(enemies_list[rv].spd * file_list[frv].file_spd)
         rs = random.randint(0, len(playerstat_list) - 1)
-        
+
         stage_calc += 1
         # print(f'{enemies_list[r].Name}{file_list[fr].file_name}')
         # print(enemies_list[r].hp * file_list[fr].file_hp)
@@ -95,22 +93,20 @@ def main() -> None:
         # print(enemies_list[r].spd * file_list[fr].file_spd)
 
         print(f'{stage_calc}. pálya')
-        
-        if stage_calc == 5:
 
-            
+        if stage_calc == 5:
             enemy_name: str = f'{enemies_list[-1].Name}{file_list[frv].file_name}'
             enemy_hp: int = int(enemies_list[-1].hp * file_list[frv].file_hp)
             enemy_atk: int = int(enemies_list[-1].atk * file_list[frv].file_atk)
             enemy_spd: int = int(enemies_list[-1].spd * file_list[frv].file_spd)
             kill, remaining_hp = battle(hp, spd, atk, mana, item, enemy_hp, enemy_spd, enemy_atk, enemy_name)
-            print(f"Maradék élet: {remaining_hp}, +50 a következő körben")
             if remaining_hp + 50 > hp:
                 remaining_hp = hp
             else:
                 remaining_hp += 50
             hp = remaining_hp
             if kill is False:
+                print(f"Maradék élet: {remaining_hp}, +50 a következő körben")
                 print('Wait...')
             time.sleep(2)
             os.system('cls')
@@ -120,25 +116,19 @@ def main() -> None:
             enemy_atk: int = int(enemies_list[-1].atk * file_list[-1].file_atk)
             enemy_spd: int = int(enemies_list[-1].spd * file_list[-1].file_spd)
             kill, remaining_hp = battle(hp, spd, atk, mana, item, enemy_hp, enemy_spd, enemy_atk, enemy_name)
-            print(f"Maradék élet: {remaining_hp}, +50 a következő körben")
-            if remaining_hp + 50 > hp:
-                remaining_hp = hp
-            else:
-                remaining_hp += 50
-            hp = remaining_hp
             if kill is False:
                 print('Wait...')
             time.sleep(2)
             os.system('cls')
         else:
             kill, remaining_hp = battle(hp, spd, atk, mana, item, enemy_hp, enemy_spd, enemy_atk, enemy_name)
-            print(f"Maradék élet: {remaining_hp}, +50 a következő körben")
             if remaining_hp + 50 > hp:
                 remaining_hp = hp
             else:
                 remaining_hp += 50
             hp = remaining_hp
             if kill is False:
+                print(f"Maradék élet: {remaining_hp}, +50 a következő körben")
                 print('Wait...')
             time.sleep(2)
             os.system('cls')
@@ -169,8 +159,11 @@ if __name__ == "__main__":
 
 while True:
     inpp: str = str(input('Szeretnél új játékot kezdeni? (Y/N): '))
-    if inpp == 'Y':
-        os.system('cls')
-        main()
+    if inpp not in ['Y', 'y', 'N', 'n']:
+        print('Hibás input!')
     else:
-        break
+        if inpp == 'Y' or inpp == 'y':
+            os.system('cls')
+            main()
+        else:
+            break

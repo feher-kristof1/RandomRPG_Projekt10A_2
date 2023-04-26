@@ -22,7 +22,12 @@ def battle(hp: int, spd: int, atk: int, mana: int, item: int, enemy_hp: int, ene
                 print("Sikeres menekülés")
                 return False, hp if hp > 0 else 0
             elif player_input_value == 3:
-                magic_select: int = int(input("válassz varázslatot[1 -> healing(+30HP)(5 mana), 2 ->enemy atk down(-7atk)(3 mana), 3 -> your atk up(+10atk)(4mana)]: "))
+                while True:
+                    magic_select: int = int(input("válassz varázslatot[1 -> healing(+30HP)(5 mana), 2 ->enemy atk down(-7atk)(3 mana), 3 -> your atk up(+10atk)(4mana)]: "))
+                    if magic_select not in [1, 2, 3]:
+                        print('Hibás input!')
+                    else:
+                        
                 if magic_select == 1 and mana >= 5:
                     print("karakter élete +30")
                     hp += 30
