@@ -37,7 +37,7 @@ def main() -> None:
     kill: bool = False
     remaining_hp: int = -999
     item: int = 5
-    while random_points != 5000:
+    while random_points != 5:
         skillpoint: int = random.randint(0, 3)
         if skillpoint == 1:
             hppoints += 1
