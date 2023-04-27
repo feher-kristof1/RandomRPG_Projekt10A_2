@@ -51,6 +51,7 @@ def battle(hp: int, spd: int, atk: int, mana: int, item: int, enemy_hp: int, ene
                 elif item_select == 2 and item >= 1:
                     print("killer használva(enemy HP/2)")
                     enemy_hp = int(enemy_hp / 2)
+                    item -= 1
                 else:
                     print("NO ITEMS")
             hp -= enemy_atk
@@ -101,6 +102,7 @@ def battle(hp: int, spd: int, atk: int, mana: int, item: int, enemy_hp: int, ene
                 elif item_select == 2 and item >= 1:
                     print("killer használva(enemy HP/2)")
                     enemy_hp = int(enemy_hp / 2)
+                    item -= 1
                 else:
                     print("NO ITEMS")
             mana += 1
