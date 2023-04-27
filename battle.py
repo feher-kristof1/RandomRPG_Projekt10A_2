@@ -11,6 +11,7 @@ def player_input():
 
 
 def battle(hp: int, spd: int, atk: int, mana: int, item: int, enemy_hp: int, enemy_spd: int, enemy_atk: int, enemy_name: str):
+    enemy_max_atk: int = enemy_atk
     while hp > 0 and enemy_hp > 0:
         print(menu(hp, atk, spd, mana, item, enemy_hp, enemy_atk, enemy_spd, enemy_name))
         player_input_value: int = int(player_input())
@@ -20,7 +21,7 @@ def battle(hp: int, spd: int, atk: int, mana: int, item: int, enemy_hp: int, ene
                 print(f"Az ellenség életereje {atk} értékkel csökkent, {enemy_hp} élete maradt")
             elif player_input_value == 2:
                 print("Sikeres menekülés")
-                return False, hp if hp > 0 else 0
+                return False, (hp if hp > 0 else 0)
             elif player_input_value == 3:
                 magic_select: int = int(input("válassz varázslatot[1 -> healing(+30HP)(5 mana), 2 ->enemy atk down(-7atk)(3 mana), 3 -> your atk up(+10atk)(4mana)]: "))
                 if magic_select == 1 and mana >= 5:
@@ -103,9 +104,13 @@ def battle(hp: int, spd: int, atk: int, mana: int, item: int, enemy_hp: int, ene
                 else:
                     print("NO ITEMS")
             mana += 1
+            if enemy_atk + 1 > enemy_max_atk:
+                pass
+            else:
+                enemy_atk += 1
     if enemy_hp > 0:
         print("YOU LOSE")
-        return True, hp if hp > 0 else 0
+        return True, (hp if hp > 0 else 0)
     elif hp > 0:
         print("YOU WIN")
-        return False, hp if hp > 0 else 0
+        return False, (hp if hp > 0 else 0)
