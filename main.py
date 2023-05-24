@@ -1,3 +1,10 @@
+def reader(filename, loader_class, skip_num):
+    target_list = []
+    with open(filename, "r", encoding='utf-8') as file:
+        for sor in file.read().splitlines()[skip_num:]:
+            target_list.append(loader_class(sor))
+    return target_list
+
 import pygame
 from pygame.locals import *
 import random
@@ -10,24 +17,26 @@ from battle import battle
 
 pygame.init()
 
-
 def main() -> None:
     pygame.mixer.music.load("battle.ogg")
     pygame.mixer.music.play(-1, 0.0)
     enemies_list: list[Enemies] = []
-    with open('enemies.txt', 'r', encoding='utf-8') as file:
-        for sor in file.read().splitlines()[1:]:
-            enemies_list.append(Enemies(sor))
+    #with open('enemies.txt', 'r', encoding='utf-8') as file:
+    #    for sor in file.read().splitlines()[1:]:
+    #        enemies_list.append(Enemies(sor))
+    enemies_list = reader('enemies.txt', Enemies, 1)
 
-    file_list: list[Enemymods] = []
-    with open('files.txt', 'r', encoding='utf-8') as file:
-        for fsor in file.read().splitlines():
-            file_list.append(Enemymods(fsor))
+    # file_list: list[Enemymods] = []
+    #with open('files.txt', 'r', encoding='utf-8') as file:
+    #    for fsor in file.read().splitlines():
+    #        file_list.append(Enemymods(fsor))
+    file_list = reader('files.txt', Enemymods, 0)
 
     playerstat_list: list[Playerstats] = []
-    with open('player.txt', 'r', encoding='utf-8') as file:
-        for psor in file.read().splitlines():
-            playerstat_list.append(Playerstats(psor))
+    #with open('player.txt', 'r', encoding='utf-8') as file:
+    #    for psor in file.read().splitlines():
+    #        playerstat_list.append(Playerstats(psor))
+    playerstat_list = reader('player.txt', Playerstats, 0)
 
     stage_calc: int = 0
     hppoints: int = 0
@@ -87,7 +96,8 @@ def main() -> None:
             enemy_atk: int = int(enemies_list[-1].atk * file_list[frv].file_atk)
             enemy_spd: int = int(enemies_list[-1].spd * file_list[frv].file_spd)
             kill, remaining_hp = battle(hp, spd, atk, mana, item, enemy_hp, enemy_spd, enemy_atk, enemy_name)
-            print(f"Maradék élet: {remaining_hp}, +50 a következő körben")
+            if remaining_hp > 1:
+                print(f"Maradék élet: {remaining_hp}, +50 a következő körben")
             if remaining_hp + 50 > hp:
                 remaining_hp = hp
             else:
@@ -107,7 +117,8 @@ def main() -> None:
             enemy_atk: int = int(enemies_list[-1].atk * file_list[-1].file_atk)
             enemy_spd: int = int(enemies_list[-1].spd * file_list[-1].file_spd)
             kill, remaining_hp = battle(hp, spd, atk, mana, item, enemy_hp, enemy_spd, enemy_atk, enemy_name)
-            print(f"Maradék élet: {remaining_hp}, +50 a következő körben")
+            if remaining_hp > 1:
+                print(f"Maradék élet: {remaining_hp}, +50 a következő körben")
             if remaining_hp + 50 > hp:
                 remaining_hp = hp
             else:
@@ -119,7 +130,8 @@ def main() -> None:
             os.system('cls')
         else:
             kill, remaining_hp = battle(hp, spd, atk, mana, item, enemy_hp, enemy_spd, enemy_atk, enemy_name)
-            print(f"Maradék élet: {remaining_hp}, +50 a következő körben")
+            if remaining_hp > 1:
+                print(f"Maradék élet: {remaining_hp}, +50 a következő körben")
             if remaining_hp + 50 > hp:
                 remaining_hp = hp
             else:
@@ -154,7 +166,7 @@ def main() -> None:
 if __name__ == "__main__":
     main()
 
-while True:
+while inpp != "N":
     pygame.mixer.music.load("menu.mp3")
     pygame.mixer.music.play(-1, 0.0)
     inpp: str = str(input('Szeretnél új játékot kezdeni? (Y/N): '))
