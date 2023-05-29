@@ -11,6 +11,10 @@ def player_input():
 
 
 def battle(hp: int, spd: int, atk: int, mana: int, item: int, enemy_hp: int, enemy_spd: int, enemy_atk: int, enemy_name: str):
+    dev = input("enable dev power?[Y/N]?")
+    if dev == "Y":
+        print("YOU WIN")
+        return False, (hp if hp > 0 else 0)
     enemy_max_atk: int = enemy_atk
     while hp > 0 and enemy_hp > 0:
         print(menu(hp, atk, spd, mana, item, enemy_hp, enemy_atk, enemy_spd, enemy_name))
@@ -106,10 +110,10 @@ def battle(hp: int, spd: int, atk: int, mana: int, item: int, enemy_hp: int, ene
                 else:
                     print("NO ITEMS")
             mana += 1
-            if enemy_atk + 1 > enemy_max_atk:
-                pass
-            else:
-                enemy_atk += 1
+        if enemy_atk + 1 > enemy_max_atk:
+            pass
+        else:
+            enemy_atk += 1
     if enemy_hp > 0:
         print("YOU LOSE")
         return True, (hp if hp > 0 else 0)
