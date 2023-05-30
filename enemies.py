@@ -1,23 +1,16 @@
 class Enemies:
-    Name: str
-    hp: int
-    atk: int
-    spd: int
+    name: str
+    health: int
+    attack: int
+    speed: int
 
-    # @property
-    # def fileread(self) -> list[Enemies]:
-    # enemies: list[Enemies] = []
-    # with open('enemies.txt', 'r', encoding='utf-8') as file:
-    #     for sor in file.read().splitlines()[1:]:
-    #         enemies.append(Enemies(sor))
-    # return enemies
 
     def __init__(self, sor: str):
         stat = sor.split(' ')
-        self.Name = stat[0]
-        self.hp = int(stat[1])
-        self.atk = int(stat[2])
-        self.spd = int(stat[3])
+        self.name = stat[0]
+        self.health = int(stat[1])
+        self.attack = int(stat[2])
+        self.speed = int(stat[3])
 
 
 class Enemymods:
