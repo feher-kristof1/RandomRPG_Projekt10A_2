@@ -1,27 +1,18 @@
-# RandomRPG_Projekt10A_2.
+# RandomRPG_Projekt10A_2
 
-## készítők:
+## Készítők
 
-- borbely-dominik-peter
-- hajba-balint
-- feher-kristof1
+- **Feher Kristóf** ([feher-kristof1](https://github.com/feher-kristof1))
+- **Borbely Dominik Péter** ([borbely-dominik-peter](https://github.com/borbely-dominik-peter))
+- **Hajba Bálint:** ([hajba-balint](https://github.com/hajba-balint))
 
-## Téma:
+## Téma
 
-- véletlen generácíóval létrehozott Role Playing Game
+A **RandomRPG** egy véletlen generácíóval létrehozott RPG játék, ahol a játékos harcolhat ellenfelekkel és fejlesztheti karakterét különböző képességekkel és felszerelésekkel.
 
-## Felhasznált technológíák:
+## Felhasznált technológíák
 
-### Szöveges változat:
+A játék fejlesztése során a következő technológiák kerültek felhasználásra:
 
-- Python3
-- pygame
-
-### Grafikus változat:
-
-- Python3
-- pygame
-- pyscript
-- HTML5
-- CSS3
-- JS
+- **Python3**
+- **Pygame**
