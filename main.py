@@ -10,8 +10,6 @@ from battle import battle
 
 pygame.init()
 os.system('cls')
-os.system('clear') # linux kompatibilitás
-
 
 def reader(filename, loader_class, skip_num):
     target_list = []
@@ -98,7 +96,6 @@ def main() -> None:
                 print('Várj...')
             time.sleep(2)
             os.system('cls')
-            os.system('clear') # linux kompatibilitás
             pygame.mixer.music.load("battle.ogg")
             pygame.mixer.music.play(-1, 0.0)
         elif stage_calc == 10:
@@ -120,7 +117,6 @@ def main() -> None:
                 print('Várj...')
             time.sleep(2)
             os.system('cls')
-            os.system('clear') # linux kompatibilitás
         else:
             kill, remaining_hp = battle(health, spd, atk, mana, item, enemy_hp, enemy_spd, enemy_atk, enemy_name)
             if remaining_hp > 1:
@@ -134,7 +130,7 @@ def main() -> None:
                 print('Várj...')
             time.sleep(2)
             os.system('cls')
-            os.system('clear') # linux kompatibilitás
+             
         if kill is True:
             break
 
@@ -151,7 +147,6 @@ while inpcheck != "N":
     inpcheck = str(input('Szeretnél új játékot kezdeni? (Y/N): '))
     if inpcheck == 'Y':
         os.system('cls')
-        os.system('clear') # linux kompatibilitás
         main()
     else:
         break
