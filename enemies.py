@@ -4,7 +4,6 @@ class Enemies:
     attack: int
     speed: int
 
-
     def __init__(self, sor: str):
         stat = sor.split(' ')
         self.name = stat[0]

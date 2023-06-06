@@ -16,3 +16,4 @@ A játék fejlesztése során a következő technológiák kerültek felhasznál
 
 - **Python3**
 - **Pygame**
+- **Rich**
