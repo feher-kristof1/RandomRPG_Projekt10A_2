@@ -10,10 +10,6 @@
 
 A **RandomRPG** egy véletlen generácíóval létrehozott RPG játék, ahol a játékos harcolhat ellenfelekkel és fejlesztheti karakterét különböző képességekkel és felszerelésekkel.
 
-## Felhasznált technológíák
-
-A játék fejlesztése során a következő technológiák kerültek felhasználásra:
-
-- **Python3**
-- **Pygame**
+## Szükséges bővítmények ### (docs/install.txt):
+- **Pygame** 
 - **Rich**

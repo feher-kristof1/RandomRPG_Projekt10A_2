@@ -1,8 +1,8 @@
-import pygame
-from pygame.locals import *
 import random
 import os
 import time
+import pygame
+from pygame.locals import *
 from char_class import Playerstats
 from enemies import Enemies
 from enemies import Enemymods
@@ -11,7 +11,8 @@ from battle import battle
 pygame.init()
 os.system('cls')
 
-def reader(filename, loader_class, skip_num):
+
+def reader(filename: str, loader_class: str, skip_num: int):
     target_list = []
     with open(filename, "r", encoding='utf-8') as file:
         for sor in file.read().splitlines()[skip_num:]:
@@ -24,7 +25,7 @@ def main() -> None:
     pygame.mixer.music.play(-1, 0.0)
     enemies_list: list[Enemies] = []
     enemies_list = reader('enemies.txt', Enemies, 1)
-    file_list = reader('files.txt', Enemymods, 0)
+    file_list: list[Enemymods] = reader('files.txt', Enemymods, 0)
     playerstat_list: list[Playerstats] = []
     playerstat_list = reader('player.txt', Playerstats, 0)
 
@@ -130,7 +131,7 @@ def main() -> None:
                 print('Várj...')
             time.sleep(2)
             os.system('cls')
-             
+
         if kill is True:
             break
 
@@ -142,11 +143,13 @@ if __name__ == "__main__":
 
 inpcheck: str = ''
 while inpcheck != "N":
+    yes = ['y', 'Y']
+    no = ['n', 'N']
     pygame.mixer.music.load("menu.mp3")
     pygame.mixer.music.play(-1, 0.0)
     inpcheck = str(input('Szeretnél új játékot kezdeni? (Y/N): '))
-    if inpcheck == 'Y':
+    if inpcheck in yes:
         os.system('cls')
         main()
-    else:
+    elif inpcheck in no:
         break
