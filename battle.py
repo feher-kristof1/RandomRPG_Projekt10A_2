@@ -1,15 +1,20 @@
 from rich.console import Console
 from menu import menu
 
+
 console = Console()
+
 
 def player_input():
     while True:
-        inp: str = (input("Kérem a játékos lépését!\n[1 -> Támadás, 2 -> Futás, 3 -> Magic, 4 -> Item]: "))
+        console.print('Lehetőségeid:', style='bright_white')
+        console.print('\t1 -> Támadás;\n\t2 -> Futás;\n\t3 -> Mágia használata;\n\t4 -> Item használata;', style='bright_white')
+        inp: str = (input("Kérem a játékos lépését! "))
         if inp not in ["1", "2", "3", "4"]:
             console.print("Hibás input!", style='bright_red')
         else:
             return int(inp)
+
 
 def battle_main_logic_enemy(hp: int, enemy_atk: int):
     hp -= enemy_atk
@@ -19,6 +24,7 @@ def battle_main_logic_enemy(hp: int, enemy_atk: int):
         console.print(f"A játékos életereje {enemy_atk} értékkel csökkent, {hp} élete maradt", style='green on black')
     return hp
 
+
 def battle_escape_logic(spd: int, enemy_spd: int):
     if spd > enemy_spd:
         console.print("Sikeres menekülés", style='yellow on black')
@@ -26,10 +32,12 @@ def battle_escape_logic(spd: int, enemy_spd: int):
     else:
         return False
 
+
 def battle_PI_1(enemy_hp: int, atk: int):
     enemy_hp -= atk
     console.print(f"Az ellenség életereje {atk} értékkel csökkent, {enemy_hp} élete maradt", style='red on black')
     return enemy_hp
+
 
 def battle_PI_3_1(hp: int, mana: int):
     max_hp: int = hp
@@ -39,6 +47,7 @@ def battle_PI_3_1(hp: int, mana: int):
         hp = max_hp
     mana -= 5
     return hp, mana
+
 
 def battle_PI_3_2(enemy_atk: int, mana: int):
     console.print("Ellenség támadása -7", style='dark_olive_green2')
@@ -50,11 +59,13 @@ def battle_PI_3_2(enemy_atk: int, mana: int):
         mana -= 3
     return enemy_atk, mana
 
+
 def battle_PI_3_3(atk: int, mana: int):
     console.print("Támadásod +10", style='dark_olive_green2')
     atk += 10
     mana -= 4
     return atk, mana
+
 
 def battle_PI_4_1(hp: int, item: int):
     max_hp: int = hp
@@ -65,6 +76,7 @@ def battle_PI_4_1(hp: int, item: int):
     item -= 1
     return hp, item
 
+
 def battle_PI_4_2(enemy_hp: int, item: int):
     console.print("Killer felhasználva (enemy HP felezve)", style='orange4')
     enemy_hp = int(enemy_hp / 2)
@@ -72,7 +84,7 @@ def battle_PI_4_2(enemy_hp: int, item: int):
     return enemy_hp, item
 
 
-def battle(hp: int, spd: int, atk: int, mana: int, item: int, enemy_hp: int, enemy_spd: int, enemy_atk: int, enemy_name: str): # fő battle függvény
+def battle(hp: int, spd: int, atk: int, mana: int, item: int, enemy_hp: int, enemy_spd: int, enemy_atk: int, enemy_name: str):  # fő battle függvény
     enemy_max_atk: int = enemy_atk
     while hp > 0 and enemy_hp > 0:
         console.print(f'{menu(hp, atk, spd, mana, item, enemy_hp, enemy_atk, enemy_spd, enemy_name)}', style='grey62')
@@ -84,7 +96,9 @@ def battle(hp: int, spd: int, atk: int, mana: int, item: int, enemy_hp: int, ene
                 console.print("Sikeres menekülés", style='yellow on black')
                 return False, (hp if hp > 0 else 0)
             elif player_input_value == 3:
-                magic_select: int = int(input("Válassz varázslatot! [1 -> Healing (+30HP) (5 mana), 2 -> Enemy atk down (-7atk) (3 mana), 3 -> Player atk up (+10atk) (4 mana)]: "))
+                console.print('Varázslataid:', style='turquoise4')
+                console.print('\t1 -> Healing:(+30 HP),(5 mana);\n\t2 -> Enemy atk down:(-7 atk),(3 mana);\n\t3 -> Your atk up:(+10 atk),(4 mana);', style='turquoise4')
+                magic_select: int = int(input("Válassz varázslatot:"))
                 if magic_select == 1 and mana >= 5:
                     hp, mana = battle_PI_3_1(hp, mana)
                 elif magic_select == 2 and mana >= 3:
@@ -94,7 +108,9 @@ def battle(hp: int, spd: int, atk: int, mana: int, item: int, enemy_hp: int, ene
                 else:
                     print("NINCS MANA")
             elif player_input_value == 4:
-                item_select: int = int(input("Melyik itemet használod? [1-> Vulnerary (+50HP), 2 -> Killer (ellenség HP felezése)]: "))
+                console.print('Itemjeid:', style='orange3')
+                console.print('\t1 -> Vulnerary: +50HP;\n\t2 -> Killer: Enemy HP halved;', style='orange3')
+                item_select: int = int(input("Válassz itemet: "))
                 if item_select == 1 and item >= 1:
                     hp, item = battle_PI_4_1(hp, item)
                 elif item_select == 2 and item >= 1:
@@ -109,7 +125,9 @@ def battle(hp: int, spd: int, atk: int, mana: int, item: int, enemy_hp: int, ene
             elif player_input_value == 2:
                 console.print("Sikertelen menekülés", style='orange3')
             elif player_input_value == 3:
-                magic_select: int = int(input("Válassz varázslatot! [1 -> Healing (+30HP) (5 mana), 2 -> Enemy atk down (-7atk) (3 mana), 3 -> Player atk up (+10atk) (4 mana)]: "))
+                console.print('Varázslataid:', style='turquoise4')
+                console.print('\t1 -> Healing:(+30HP),(5 mana);\n\t2 -> Enemy atk down:(-7atk),(3 mana);\n\t3 -> Your atk up:(+10atk),(4 mana);', style='turquoise4')
+                magic_select: int = int(input("Válassz varázslatot:"))
                 if magic_select == 1 and mana >= 5:
                     hp, mana = battle_PI_3_1(hp, mana)
                 elif magic_select == 2 and mana >= 3:
@@ -119,7 +137,9 @@ def battle(hp: int, spd: int, atk: int, mana: int, item: int, enemy_hp: int, ene
                 else:
                     print("NINCS MANA")
             elif player_input_value == 4:
-                item_select: int = int(input("Melyik itemet használod? [1-> Vulnerary (+50HP), 2 -> Killer (ellenség HP felezése)]: "))
+                console.print('Itemjeid:', style='orange3')
+                console.print('1-> Vulnerary: +50HP;\n\t 2 -> Killer: Enemy HP halved;', style='ornage3')
+                item_select: int = int(input("Válassz itemet: "))
                 if item_select == 1 and item >= 1:
                     hp, item = battle_PI_4_1(hp, item)
                 elif item_select == 2 and item >= 1:

@@ -1,0 +1,4 @@
+pygame
+    python -m pip install -U pygame==2.4.0 --user
+rich
+    pip install rich
